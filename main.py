@@ -89,7 +89,8 @@ def main():
         "31st Aug": 36,
         "07th Sep": 52,
         "14th Sep": 66,
-        "21st Sep": 82
+        "21st Sep": 82,
+        "28th Sep": 100
     }
     for date, percentage in milestones.items():
         st.text(f"WNBP Achieve Milestone by {date} ({percentage}% of Target) - {percentage*WNBP_Achieve_Milestone_Amount/100} EP")
