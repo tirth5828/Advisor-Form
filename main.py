@@ -45,6 +45,7 @@ def main():
     st.subheader("For NLA / Advisor only (01st Aug 2024 to 16th Sep 2024)")
     rewards_nla = {
         "Select EP Goal": 0,
+        "I am not a NLA": 0, 
         "70000 EP 7500 Reward": 70000,
         "125000 EP 15000 Reward": 125000
     }
