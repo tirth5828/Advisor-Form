@@ -74,6 +74,11 @@ def main():
     slab_achievement_ep_goal = st.selectbox("Select EP Goal", list(rewards_slab.keys()), key="slab_achievement_ep_goal")
     if slab_achievement_ep_goal == "Select EP Goal":
         st.warning("Please select an EP Goal for Slab Achievement.")
+        
+    # WNBP Achieve Milestone Amount Aug - Sep 2024
+    WNBP_Achieve_Milestone_Amount = st.number_input("WNBP Achieve Milestone Amount Aug - Sep 2024", key="WNBP_Achieve_Milestone_Amount")
+    if not WNBP_Achieve_Milestone_Amount:
+        st.warning("Please enter the WNBP Achieve Milestone Amount Aug - Sep 2024.")
 
     # WNBP Achieve Milestone
     st.subheader("WNBP Achieve Milestone")
@@ -87,7 +92,7 @@ def main():
         "21st Sep": 82
     }
     for date, percentage in milestones.items():
-        st.text(f"WNBP Achieve Milestone by {date} ({percentage}% of Target) - {percentage*rewards_slab[slab_achievement_ep_goal]/100} EP")
+        st.text(f"WNBP Achieve Milestone by {date} ({percentage}% of Target) - {percentage*WNBP_Achieve_Milestone_Amount/100} EP")
 
     # Achieve by September END
     st.subheader("What will I Achieve by September END")
@@ -106,13 +111,14 @@ def main():
 
     # Submit Button
     if st.button("Submit"):
-        if advisor_code and advisor_name and nlp_ep_goal != "Select EP Goal" and slab_achievement_ep_goal != "Select EP Goal" and selected_achievement:
+        if advisor_code and advisor_name and nlp_ep_goal != "Select EP Goal" and slab_achievement_ep_goal != "Select EP Goal" and selected_achievement and WNBP_Achieve_Milestone_Amount!=0 and qualify_cot_tot:
             data = {
                 "advisor_code": advisor_code,
                 "advisor_name": advisor_name,
                 "nlp_ep_goal": nlp_ep_goal,
                 "slab_achievement_ep_goal": slab_achievement_ep_goal,
                 "selected_achievement": selected_achievement,
+                "WNBP_achieve_milestone_amount": WNBP_Achieve_Milestone_Amount,
                 "qualify_cot_tot": qualify_cot_tot
             }
             db.collection("advisor_planning").add(data)
