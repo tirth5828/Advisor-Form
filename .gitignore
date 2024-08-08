@@ -1,0 +1,5 @@
+# Streamlit Secrets
+/.streamlit/secrets.toml
+
+# Firebase credentials (if JSON)
+*.json
